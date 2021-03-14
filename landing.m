@@ -17,13 +17,13 @@ WTT = 0.12 *  0.965; % wing tip thickness
 FA = pi * (0.5 * 2.5)^2; %fuselage area
 A_csa = (2 * (0.5 * (0.5 * span) * (WRT + WTT))) + FA; %front cross sectional area
 
-%% Weight defaulting
+%% Weight defaulting, defaults to MLW if 0 is given as an input
 if W == 0
    fprintf("no weight value assinged, using MLW");
    W = MW_landing;
 end
     
-%% Stall and velocity calculation
+%% Stall and velocity calculations
 V_stall = sqrt((2 * W) / (d * A * Cl_max));
 V_app = 1.3 * V_stall;
 V_tran = 0.95 * V_app;
@@ -32,7 +32,7 @@ V_land = 0.95 * V_tran;
 %% Lift Calculation
 L = Cl_max * ((d * V_app^2) / 2) * A;
 
-%% First order approximation
+%% First order approximation for total landing distance
 Sa_land = 0.3 * V_app^2; %approximation in meters
 
 %% Landing distance from a clearance height of 50ft
@@ -43,7 +43,6 @@ S_land = (D_eff / L) * (50 + (V_app^2 - V_land^2) / 2 * g);
 G_run = V_land^2 / (2 * mu * g);
 
 %% Graphing landing Approximation
-
 figure(1)
 clf
 App_Vx = [-290, 0]; %approach x
@@ -67,7 +66,7 @@ xlabel('Distance (Meters)');
 ylabel('Altitude (Meters)');
 hold off
 
-%% Graphing landing
+%% Graphing landing distance from 15.24m alt (50ft)
 figure(2)
 clf
 App_Vx = [-290, 0]; %approach x
@@ -91,14 +90,14 @@ xlabel('Distance (Meters)');
 ylabel('Altitude (Meters)');
 hold off
 
-%% Graphing ground run
+%% Graphing ground run (brakes only)
 figure(3)
 clf
 rwx = [0 750]; %runway x
 rwy = [-2 -2]; %runway x
 L_point = [0 0]; %landing point
 L_gr = [G_run 0]; %landing distance approx
-txt3 = 'Ground run calculation';
+txt3 = 'Ground run calculation (brakes only)';
 
 hold on
 p = plot(rwx, rwy, App_Vx, App_Vy, '--b', L_gr, L_point, 'red');
@@ -108,7 +107,7 @@ ylim([-10 250]);
 p(1).LineWidth = 3;
 p(1).Color = 'black';
 p(3).LineWidth = 2;
-title('Ground Run Distance');
+title('Ground Run Distance (brakes only)');
 xlabel('Distance (Meters)');
 ylabel('Altitude (Meters)');
 hold off
