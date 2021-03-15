@@ -34,15 +34,15 @@ L = Cl_max * ((d * V_app^2) / 2) * A;
 %% First order approximation for total landing distance
 Sa_land = 0.3 * V_app^2; %approximation in meters
 
-%% landing distance new method
-Ae = g * ((0 / W) - mu);
-Be = (g / W) * (0.5 * d * A * (Cd - (mu * Cl_max)));
-fprintf("\n A[%f]\n B[%f]",Ae, Be);
+%% landing distance new method, using source from internet
+Ae = g * ((0 / W) - mu); % Ae wasnt really defined in pdf
+Be = (g / W) * (0.5 * d * A * (Cd - (mu * Cl_max))); %likewise with Be
+fprintf("\n A[%f]\n B[%f]\n", Ae, Be);
 S_land = (1 / (2 * Be)) * log(1 - (Be / Ae) * V_land^2);
 
 
 
-%% Landing distance from a clearance height of 50ft 
+%% Landing distance from a clearance height of 50ft, equation from performace sheet
 %{
 D_eff = 0.5 * d * V_app^2 * Cd * A_csa;
 S_land = 50 * (D_eff / L) +  ((V_app^2 - V_land^2) / (2 * D_eff));
