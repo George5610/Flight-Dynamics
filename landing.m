@@ -1,4 +1,3 @@
-
 function [Sa_land, S_land, G_run, V_stall, V_app, V_tran, V_land] = landing(W)
 %% Variables
 p = 101325; %pressure in pascals
@@ -35,10 +34,19 @@ L = Cl_max * ((d * V_app^2) / 2) * A;
 %% First order approximation for total landing distance
 Sa_land = 0.3 * V_app^2; %approximation in meters
 
-%% Landing distance from a clearance height of 50ft
-D_eff = 0.5 * d * V_app^2 * Cd * A_csa;
-S_land = (D_eff / L) * (50 + (V_app^2 - V_land^2) / 2 * g);
+%% landing distance new method
+Ae = g * ((0 / W) - mu);
+Be = (g / W) * (0.5 * d * A * (Cd - (mu * Cl_max)));
+fprintf("\n A[%f]\n B[%f]",Ae, Be);
+S_land = (1 / (2 * Be)) * log(1 - (Be / Ae) * V_land^2);
 
+
+
+%% Landing distance from a clearance height of 50ft 
+%{
+D_eff = 0.5 * d * V_app^2 * Cd * A_csa;
+S_land = 50 * (D_eff / L) +  ((V_app^2 - V_land^2) / (2 * D_eff));
+%}
 %% Ground Run
 G_run = V_land^2 / (2 * mu * g);
 
