@@ -10,6 +10,7 @@ mu = 0.45; %best braking conditions, coefficent of braking
 g = 9.81; %acceleration due to gravity
 span = 18.5; %wing span
 T = 18450; % static thrust per engine sea lvl
+
 %% Weight defaulting, defaults to MLW if 0 is given as an input
 if W == 0
    fprintf("no weight value assinged, using MTOW");
@@ -21,11 +22,16 @@ WRT = 0.12 * 2.143; % wing root thickness
 WTT = 0.12 *  0.965; % wing tip thickness
 FA = pi * (0.5 * 2.5)^2; %fuselage area
 A_csa = (2 * (0.5 * (0.5 * span) * (WRT + WTT))) + FA; %front cross sectional area
+
 %% Stall and velocity calculations
 V_stall = sqrt((2 * W) / (d * A * Cl_max));
 V_rot = 1.05 * V_stall;
 V_lof = 1.1 * V_stall;
 V_tos = 1.2 * V_stall;
+
+%% Cl calculation
+Cl_lof = W / (0.5 * d * V_lof^2 * A);
+Cl_rot = W / (0.5 * d * V_rot^2 * A);
 
 %% Lift Calculation
 Lift = Cl_max * ((d * V_lof^2) / 2) * A;
@@ -34,7 +40,7 @@ Lift = Cl_max * ((d * V_lof^2) / 2) * A;
 drag = 0.5 * d * V_lof^2 * Cd * A_csa;
 
 %% Ground Run
-S_g = (-W/(d * g * A_csa)) * (1/(Cd - (mu * Cl_max))) * log(1 - ((Cd - mu * Cl_max) / ((T/W)-mu) * Cl_max));
+S_g = (-W/(d * g * A_csa)) * (1/(Cd - (mu * Cl_rot))) * log(1 - ((Cd - mu * Cl_rot) / ((T/W)-mu) * Cl_lof));
 
 %% Graphing
 figure(1)
@@ -44,7 +50,7 @@ rwy = [-2 -2]; %runway y
 S_point = [0 0]; %starting point
 Dis = [0 S_g]; %takeoff distance
 TOVy = [0 15.24]; %takeoff vector
-TOVx = [S_g 290+S_g]; %takeoff vector for 3 degree climb
+TOVx = [S_g 290+S_g]; %takeoff vector for 3 degree climb, take off vector is a place holder
 txt1 = 'Take off distance';
 
 hold on;
