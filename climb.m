@@ -1,4 +1,4 @@
-function [] = climb(W)
+function [C_a] = climb(W)
 %% Variables
 p = 101325; %pressure in pascals
 d = 1.225; % density at sea level kg/m^3
@@ -9,7 +9,7 @@ MTOW = 15580; %Max take off weight
 g = 9.81; %acceleration due to gravity
 span = 18.5; %wing span
 Eng_Power = 1625000; %Watts at sea lvl per engine
-T_0 = 18450; % static thrust per engine sea lvl
+T = 18450; % static thrust per engine sea lvl
 
 %% Weight defaulting, defaults to MLW if 0 is given as an input
 if W == 0
@@ -18,11 +18,11 @@ if W == 0
 end
 
 %% Velocity Calculation
+V = T - D
 
+%% rate of climb
+ROC = T - 
 
-
-%% ROC calculation
-ROC = (T - 0.5 * d * )
 
 
 end

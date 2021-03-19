@@ -3,7 +3,7 @@ function [Sa_land, S_land, G_run, V_stall, V_app, V_tran, V_land] = landing(W)
 p = 101325; %pressure in pascals
 d = 1.225; % density at sea level kg/m^3
 A = 31.25; %wing area in m^2
-Cl_max = 1.5; %cl max according to airfoil tools, around 20 AoA AoA
+Cl_max = 1.5; %cl max according to airfoil tools, around 20 AoA
 Cd = 0.015; %Cd from initial sizing sheet
 MW_landing = 15570; %use 15158 for 28 seat, for 35 seat use 15570, in kg
 mu = 0.45; %best braking conditions, coefficent of braking
@@ -65,7 +65,7 @@ hold on;
 p = plot(rwx, rwy, App_Vx, App_Vy, '--b', L_approx, L_point, 'red');
 text(0,100,txt1,'HorizontalAlignment','left');
 xlim([-290 750]);
-ylim([-10 250]);
+ylim([-10 750])
 p(1).LineWidth = 3;
 p(1).Color = 'black';
 p(3).LineWidth = 2;
@@ -89,7 +89,7 @@ hold on
 p = plot(rwx, rwy, App_Vx, App_Vy, '--b', L_dis, L_point, 'red');
 text(0,100,txt2,'HorizontalAlignment','left');
 xlim([-290 750]);
-ylim([-10 250]);
+ylim([-10 750])
 p(1).LineWidth = 3;
 p(1).Color = 'black';
 p(3).LineWidth = 2;
@@ -111,7 +111,7 @@ hold on
 p = plot(rwx, rwy, App_Vx, App_Vy, '--b', L_gr, L_point, 'red');
 text(0,100,txt3,'HorizontalAlignment','left');
 xlim([-290 750]);
-ylim([-10 250]);
+ylim([-10 750])
 p(1).LineWidth = 3;
 p(1).Color = 'black';
 p(3).LineWidth = 2;
