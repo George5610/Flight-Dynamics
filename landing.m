@@ -58,8 +58,6 @@ L = Cl * ((d * V_app^2) / 2) * A;
 
 %% Landing distance from a clearance height of 50ft to ground, equation from performace sheet
 D_eff = 0.5 * d * V_app^2 * Cd * A_csa;
-%S_land = 15.24 * (D_eff / L) +  ((V_app^2 - V_land^2) / (2 * D_eff));
-
 S_land = (D_eff/L) * (15.24 + ((V_app^2 - V_land^2)) / 2 * g);
 
 %% Ground Run
