@@ -1,4 +1,5 @@
 function [hn, margin] = stickfixed()
+clear;
 hnwb = 0.25; % stick fixed neutral point for the main wing
 eta = 1.1; % propeller efficiency, taken from tutorials
 lt = 10.619; % distnace from aerodynamic centre of the tail to the wing
