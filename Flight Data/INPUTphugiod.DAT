@@ -1,0 +1,65 @@
+ ETKIN LONG & LAT TEST CASES - PHUGOID
+ ODE Simulation Control Variables
+ Long/Lat 1
+ T Start  0.0
+ T End    200.0
+ TStep    0.1
+ Control Deflections
+ DE       5         
+ 0.0       0.01      10.0      10.01     2000.0    
+ 0.0       1.0       1.0       0.0       0.0      
+ DA       0
+ 0.0       2000.0
+ 0.0       0.0
+ DR       0
+ 0.0       2000.0
+ 0.0       0.0
+ Initial Values
+ 0.05      0.0       0.0       0.0       0.0       0.0            
+ Aircraft Constants
+ Mass     1054.6
+ Ixx      1892.
+ Iyy      356.
+ Izz      2332.
+ Ixz      233.
+ S        15.7934
+ cbar     0.4
+ b        10.6
+ rho      1.225
+ AR       7.2
+ CD0      0.015
+ Trim Conditions
+ u0       70.0
+ CL0      0.3368
+ Theta0   0.0
+ Beta0    0.0
+ Stability Derivatives
+ CXu      -0.09
+ CZu      -0.6851
+ Cmu      0.0
+ CXalpha  0.1753
+ CZalpha  -5.0609
+ Cmalpha  -0.6818
+ CZq      -0.2920
+ Cmq      -1.0503
+ CZalphad -0.1298
+ Cmalphad -0.4668
+ CYbeta   -0.0979
+ Clbeta   -0.0025 
+ Cnbeta   0.0565
+ CYp      0.0
+ Clp      -0.7584
+ Cnp      -0.6289
+ CYr      0.0888
+ Clr      0.06
+ Cnr      -0.03
+ Control Derivatives
+ CAde     0.0
+ CZde     0.0
+ Cmde     0.008
+ CYda     0.0
+ Clda     0.0
+ Cnda     0.0
+ CYdr     0.0
+ Cldr     0.0
+ Cndr     0.0
